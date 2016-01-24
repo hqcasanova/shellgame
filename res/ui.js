@@ -131,12 +131,33 @@
         }
     }
 
+    /**
+     * Determines the name of the transition event supported by the current browser
+     * @author <a href="http://davidwalsh.name/css-animation-callback">David Walsh</a> 
+     */
+    function whichTransitionEvent(){
+        var el = document.createElement("fakeelement");
+        var transitions = {
+            "transition"      : "transitionend",
+            "OTransition"     : "oTransitionEnd",
+            "MozTransition"   : "transitionend",
+            "WebkitTransition": "webkitTransitionEnd"
+        }
+        var t;
+
+        for (t in transitions){
+            if (el.style[t] !== undefined){
+                return transitions[t];
+            }
+        }
+    }
+
     //Enable js-only styles
     document.body.className = '';
 
     //Delegated events for intro view
     introEl.addEventListener("click", fadeIntro, false);
-    introEl.addEventListener("transitionend", afterIntro, false);
+    introEl.addEventListener(whichTransitionEvent(), afterIntro, false);
 
     //Delegated events for game view
     gameEl.addEventListener("click", shuffle, false);
