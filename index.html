@@ -1,0 +1,56 @@
+<html lang="en">
+    <head>
+        <meta charset="uft-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Online version of the Shell game. Keep track of the ball while the cups are swapped and guess where it ended up.">
+        <title>Game of Shells</title>
+        <link rel="stylesheet" type="text/css" href="res/styles.css">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800">
+    </head>
+    <body class="no-js">
+        <!--[if lte IE 9]>This website does not support Internet Explorer 8 or below. Please <a href="http://outdatedbrowser.com">upgrade your browser to the latest version</a><![endif]-->
+        <header id="intro" class="vertical-reference"><!--
+        !--><div class="center-vertically">
+                <h1>Game of Shells</h1>
+                <dl>
+                    <dt><dfn>Shell game</dfn></dt>
+                    <dt><dfn>Thimblerig</dfn></dt>
+                    <dt><dfn>Old army game</dfn></dt>
+                    <dt><dfn class="last">Three shells and a pea</dfn></dt>
+                    <dd>Whatever the name, the game is the same: to keep track of the ball while three cups are moved around and then guess which cup contains it. A classic.</dd>
+                </dl>
+                <a href="#game" class="button">Continue</a>
+          </div>
+        </header>
+        <main id="game" class="vertical-reference"><!--
+        !--><a class="notice" href="http://www.enable-javascript.com/">JavaScript is disabled. Please <span>enable it</span> and refresh the page</a>
+            <ul class="messages">
+                <li>Press "New round" below</li>
+                <li>Where is the ball? Press on one of the cups</li>
+                <li>Good guess! Fancy a new round?</li>
+                <li>Not there. Try a new round!</li>
+            </ul>
+            <div class="cups center-vertically">
+                <div class="cup"></div>
+                <div class="cup">
+                    <span class="ball"></span>
+                </div>
+                <div class="cup"></div>
+            </div>
+            <div class="controls">
+                <button class="new-round">New round</button>
+            </div>
+        </main>
+        <script src="res/ui.js"></script>
+        <footer>
+            <small class="license">
+                <a rel="license" title="The MIT License" href="http://opensource.org/licenses/MIT"><img alt="MIT" src="res/mit.png" width="120" height="64"/>MIT License</a>
+            </small><!--
+        !--><address class="author">
+                <a rel="author" title="HQCasanova" href="http://www.hqcasanova.com">HQCasanova<img alt="HQCasanova" src="res/hq.png" width="64" height="64"/></a>
+            </address>
+            <time pubdate datetime="2016-01-23"></time>
+        </footer>
+    </body>
+</html>
