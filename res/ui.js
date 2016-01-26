@@ -1,18 +1,23 @@
 /**
  * @fileOverview Implements the game cycle, managing the display of messages according to game state and 
  * determining whether a round has been won or not.
- * @author hqcasanova cv@hqcasanova.com
+ * @author hqcasanova develop@hqcasanova.com
  */
 (function() {
+    /** Constants **/
+    var NUM_SWAPS = 3;
+    var BOTTOM_URL = 'res/bottom.png';
+
+    /** Variables **/
     var introEl = document.getElementById('intro');                 //root DOM element for the intro view
     var gameEl = document.getElementById('game');                   //root DOM element for the game view
+    var loaderEl = introEl.getElementsByClassName('loader')[0];     //DOM element for the "loading" spinner
     var continueEl = introEl.getElementsByClassName('button')[0];   //DOM element for the "continue" button
     var messagesEl = gameEl.getElementsByClassName('messages')[0];  //DOM element for the message container
     var cupsEl = gameEl.getElementsByClassName('cups')[0];          //DOM element for the cup container
     var ballEl = cupsEl.getElementsByClassName('ball')[0];          //DOM element for the ball
     var newRoundEl = gameEl.getElementsByClassName('new-round')[0]; //DOM element for the "new round" button
     var gameState = 0;                                              //matches with the message index
-
 
     /**
      * Triggers the change in the main element's opacity on clicking the "continue" button
@@ -90,6 +95,8 @@
      * @param {Object} e Event object
      */
     function shuffle (e) {
+        var i = 0;
+
         if ((e.target == newRoundEl) && (gameState != 1)) {
             
             //Prevents any spurious event    
@@ -98,9 +105,9 @@
             //Prevents starting a new round before finishing the current one
             e.target.disabled = true;
 
-            moveCups();
-            moveCups();
-            moveCups();
+            for (i; i < NUM_SWAPS; i++) {
+                moveCups();
+            }
             nextState(1);
         }
     }
@@ -135,31 +142,45 @@
      * Determines the name of the transition event supported by the current browser
      * @author <a href="http://davidwalsh.name/css-animation-callback">David Walsh</a> 
      */
-    function whichTransitionEvent(){
-        var el = document.createElement("fakeelement");
+    function whichTransitionEvent () {
+        var el = document.createElement('fakeelement');
         var transitions = {
-            "transition"      : "transitionend",
-            "OTransition"     : "oTransitionEnd",
-            "MozTransition"   : "transitionend",
-            "WebkitTransition": "webkitTransitionEnd"
+            'transition'      : 'transitionend',
+            'OTransition'     : 'oTransitionEnd',
+            'MozTransition'   : 'transitionend',
+            'WebkitTransition': 'webkitTransitionEnd'
         }
         var t;
 
-        for (t in transitions){
+        for (t in transitions) {
             if (el.style[t] !== undefined){
                 return transitions[t];
             }
         }
     }
 
+    //Pre-loads other not-yet-rendered resources before proceeding to the game
+    function onPageLoad () {
+        var bottomImg  = new Image();
+        
+        bottomImg.onload = function () {
+            loaderEl.style.display = 'none';
+            continueEl.style.display = 'inline-block';
+        }
+        bottomImg.src = BOTTOM_URL;
+    }
+
     //Enable js-only styles
     document.body.className = '';
 
     //Delegated events for intro view
-    introEl.addEventListener("click", fadeIntro, false);
+    introEl.addEventListener('click', fadeIntro, false);
     introEl.addEventListener(whichTransitionEvent(), afterIntro, false);
 
     //Delegated events for game view
-    gameEl.addEventListener("click", shuffle, false);
-    gameEl.addEventListener("click", end, false);
+    gameEl.addEventListener('click', shuffle, false);
+    gameEl.addEventListener('click', end, false);
+
+    //Loading
+    window.addEventListener('load', onPageLoad);
 })();
