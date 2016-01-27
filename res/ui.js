@@ -36,16 +36,11 @@
     }
 
     /**
-     * Gets everything ready visually for the game view once the intro has faded out
+     * Flow-wise, hides the intro altogether and shows the game once the intro has completely faded out
      */
     function afterIntro () {
-
-        //Removes the intro view from the flow    
         introEl.style.display = 'none';
-
-        //Shows feedback components of the game view
-        gameEl.className += ' show';
-
+        gameEl.style.display = 'block';
     }
 
     /**
