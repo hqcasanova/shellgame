@@ -6,7 +6,7 @@
 (function() {
     /** Constants **/
     var NUM_SWAPS = 3;
-    var BOTTOM_URL = 'res/bottom.png';
+    var IMG_URLS = ['res/top.png', 'res/bottom.png'];
 
     /** Variables **/
     var introEl = document.getElementById('intro');                 //root DOM element for the intro view
@@ -18,6 +18,7 @@
     var ballEl = cupsEl.getElementsByClassName('ball')[0];          //DOM element for the ball
     var newRoundEl = gameEl.getElementsByClassName('new-round')[0]; //DOM element for the "new round" button
     var gameState = 0;                                              //matches with the message index
+    var loadedImgs = 0;                                             //number of images fully preloaded
 
     /**
      * Triggers the change in the main element's opacity on clicking the "continue" button
@@ -156,13 +157,24 @@
 
     //Pre-loads other not-yet-rendered resources before proceeding to the game
     function onPageLoad () {
-        var bottomImg  = new Image();
-        
-        bottomImg.onload = function () {
-            loaderEl.style.display = 'none';
-            continueEl.style.display = 'inline-block';
+        var numImgs = IMG_URLS.length;
+        var preloadImg;
+        var i = 0;
+
+        for (i; i < numImgs; i++) {
+            preloadImg = new Image();
+
+            preloadImg.onload = function () {
+                loadedImgs++;
+
+                if (loadedImgs == numImgs) {
+                    loaderEl.style.display = 'none';
+                    continueEl.style.display = 'inline-block';
+                }
+            }
+
+            preloadImg.src = IMG_URLS[i];
         }
-        bottomImg.src = BOTTOM_URL;
     }
 
     //Enable js-only styles
