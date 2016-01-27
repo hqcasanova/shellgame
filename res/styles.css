@@ -77,6 +77,7 @@ dd, p {
     text-align: center;
     background: rgb(240, 240, 240);
     transition: opacity 1s;
+    -webkit-backface-visibility: hidden;/* Prevents absolutely positioned elements being invisible on Android */
 }
 .no-js #intro {                         /* If JS enabled, class is removed to avoid scrolling */
     position: static;
@@ -203,6 +204,7 @@ footer {
     -moz-border-radius: 1em 1em 0 0;
     -webkit-border-radius: 1em 1em 0 0;
     border-radius: 1em 1em 0 0;
+    -webkit-backface-visibility: hidden;  /* Prevents absolutely positioned elements being invisible on Android */
 }
 footer img {
     width: auto;
@@ -242,6 +244,7 @@ footer img {
 .messages, .controls {          /* Shows game view's feedback components only after intro view is hidden */
     display: block;
     position: absolute;
+    -webkit-backface-visibility: hidden;/* Prevents absolutely positioned elements being invisible on Android */
 }
 .cup {
     display: inline-block;
