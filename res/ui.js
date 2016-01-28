@@ -6,7 +6,6 @@
 (function() {
     /** Constants **/
     var NUM_SWAPS = 3;
-    var IMG_URLS = ['res/top.png', 'res/bottom.png'];
 
     /** Variables **/
     var introEl = document.getElementById('intro');                 //root DOM element for the intro view
@@ -156,25 +155,9 @@
     }
 
     //Pre-loads other not-yet-rendered resources before proceeding to the game
-    function onPageLoad () {
-        var numImgs = IMG_URLS.length;
-        var preloadImg;
-        var i = 0;
-
-        for (i; i < numImgs; i++) {
-            preloadImg = new Image();
-
-            preloadImg.onload = function () {
-                loadedImgs++;
-
-                if (loadedImgs == numImgs) {
-                    loaderEl.style.display = 'none';
-                    continueEl.style.display = 'inline-block';
-                }
-            }
-
-            preloadImg.src = IMG_URLS[i];
-        }
+    function hideSpinner () {
+        loaderEl.style.display = 'none';
+        continueEl.style.display = 'inline-block';       
     }
 
     //Enable js-only styles
@@ -189,5 +172,5 @@
     gameEl.addEventListener('click', end, false);
 
     //Loading
-    window.addEventListener('load', onPageLoad);
+    window.addEventListener('load', hideSpinner);
 })();

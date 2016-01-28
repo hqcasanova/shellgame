@@ -306,3 +306,12 @@ footer img {
 @media only screen and (min-width: 2000px) {
   body {font-size: 200%}
 }
+
+/********** Image pre-loading **********/
+body:before {
+  content: '';
+  background-image: url('top.png'), url('bottom.png');
+  width: 0;
+  height: 0;
+  display: inline;
+}
