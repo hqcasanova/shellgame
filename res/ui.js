@@ -140,10 +140,10 @@
     function whichTransitionEvent () {
         var el = document.createElement('fakeelement');
         var transitions = {
-            'WebkitTransition': 'webkitTransitionEnd'
+            'WebkitTransition': 'webkitTransitionEnd',
             'transition'      : 'transitionend',
             'OTransition'     : 'oTransitionEnd',
-            'MozTransition'   : 'transitionend',
+            'MozTransition'   : 'transitionend'
         }
         var t;
 
