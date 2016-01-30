@@ -31,7 +31,7 @@
             e.stopPropagation();
             
             //Fades the introduction out
-            introEl.className += ' fade';  newRoundEl.textContent = whichTransitionEvent();
+            introEl.className += ' fade';
         }
     }
 
@@ -140,10 +140,10 @@
     function whichTransitionEvent () {
         var el = document.createElement('fakeelement');
         var transitions = {
+            'WebkitTransition': 'webkitTransitionEnd'
             'transition'      : 'transitionend',
             'OTransition'     : 'oTransitionEnd',
             'MozTransition'   : 'transitionend',
-            'WebkitTransition': 'webkitTransitionEnd'
         }
         var t;
 
