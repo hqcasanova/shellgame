@@ -31,7 +31,7 @@
             e.stopPropagation();
             
             //Fades the introduction out
-            introEl.className += ' fade';
+            introEl.className += ' fade';  newRoundEl.textContent = whichTransitionEvent();
         }
     }
 
@@ -41,7 +41,6 @@
     function afterIntro () {
         introEl.style.display = 'none';
         gameEl.style.display = 'block';
-        newRoundEl.textContent = 'Test';
     }
 
     /**
