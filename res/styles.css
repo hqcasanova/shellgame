@@ -66,7 +66,7 @@ dd, p {
 .center-vertically {                    /* Content to be centered vertically */
     display: inline-block;
     vertical-align: middle;
-    width: 90%;
+    width: 85%;
 }
 
 /*** Welcome view ***/
