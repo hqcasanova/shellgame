@@ -219,7 +219,7 @@ footer img {
 
 /*** Game view ***/
 #game {
-    /*display: none;*/
+    display: none;
     width: 100%;
     height: 100%;
     text-align: center;
