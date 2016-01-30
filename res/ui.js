@@ -41,6 +41,7 @@
     function afterIntro () {
         introEl.style.display = 'none';
         gameEl.style.display = 'block';
+        newRoundEl.style.display = 'none';
     }
 
     /**
