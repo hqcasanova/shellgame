@@ -244,7 +244,31 @@ footer img {
 .messages, .controls {          /* Shows game view's feedback components only after intro view is hidden */
     display: block;
     position: absolute;
-    -webkit-backface-visibility: hidden;/* Prevents absolutely positioned elements being invisible on Android */
+    -webkit-backface-visibility: hidden;    /* Prevents absolutely positioned elements being invisible on Android */
+}
+.won:before {                   /* Tick icon on top-left corner of message region */
+    content: '';
+    position: absolute;
+    top: .6em;
+    left: 1.5em;
+    width: .4em;
+    height: 1em;
+    border-width: 0 5px 5px 0;
+    border-style: solid;
+    border-color: #7F913C;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.lost:before {                /* Cross icon on top-left corner of message region */
+    content: 'X';
+    position: absolute;
+    left: 1em;
+    color: #c55500;
+    font-weight: 800;
+    font-size: 1.2em;
 }
 .cup {
     display: inline-block;
