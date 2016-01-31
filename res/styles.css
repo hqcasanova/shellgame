@@ -258,10 +258,10 @@ footer img {
     background-image: url('bottom.png');
 }
 .ball {
-    display: block;
+    display: inline-block;
     width: 3.2em;
     height: 3.2em;
-    margin: 8em auto 0;
+    margin: 0 .1em .9em 0;
     background-color: black;
     border-radius: 50%;
     -webkit-border-radius: 50%;
