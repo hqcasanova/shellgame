@@ -112,7 +112,7 @@
      * @param {Object} e Event object
      */
     function end (e) {
-        if ((e.target.className == 'cup') && (gameState == 1)) {
+        if ((e.target.className.indexOf('cup') != -1) && (gameState == 1)) {
 
             //Prevents any spurious event     
             e.stopPropagation();
