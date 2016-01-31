@@ -119,7 +119,7 @@
 
             //Turn cups back upside
             cupsEl.classList.remove('bottom');
-            ballEl.style.display = 'block';
+            ballEl.style.display = 'inline-block';
 
             //Show the corresponding message. If the element has any child element, then it must have the ball
             if (e.target.children.length) {
