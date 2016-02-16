@@ -112,14 +112,14 @@
      * @param {Object} e Event object
      */
     function end (e) {
-        if ((e.target.className == 'cup') && (gameState == 1)) {
+        if ((e.target.className.indexOf('cup') != -1) && (gameState == 1)) {
 
             //Prevents any spurious event     
             e.stopPropagation();
 
             //Turn cups back upside
             cupsEl.classList.remove('bottom');
-            ballEl.style.display = 'block';
+            ballEl.style.display = 'inline-block';
 
             //Show the corresponding message. If the element has any child element, then it must have the ball
             if (e.target.children.length) {
@@ -140,10 +140,10 @@
     function whichTransitionEvent () {
         var el = document.createElement('fakeelement');
         var transitions = {
+            'WebkitTransition': 'webkitTransitionEnd',
             'transition'      : 'transitionend',
             'OTransition'     : 'oTransitionEnd',
-            'MozTransition'   : 'transitionend',
-            'WebkitTransition': 'webkitTransitionEnd'
+            'MozTransition'   : 'transitionend'
         }
         var t;
 
