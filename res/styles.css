@@ -1,0 +1,341 @@
+/********** Mobile-first design **********/
+
+/*** Global reset ***/
+html, body, header, div, button, main, ul, li, footer, h1, dl, dt, dfn, dd, p, small, address, time {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    background: none;
+}
+ul {
+    list-style: none;
+}
+a {
+    outline: 0; 
+    color: inherit;
+    text-decoration: underline;
+}
+a img {
+    border-style: none;
+}
+
+/*** Custom defaults ***/
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body {
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    background: url('cloth.jpg') repeat bottom left rgb(181, 180, 159);
+}
+h1 {
+    font-size: 2.7em;
+    font-family: "Bodoni MT", Didot, "Didot LT STD", "Book Antiqua", Garamond, "Times New Roman", serif;
+}
+dfn {
+    font-style: italic;
+}
+dd, p {
+    line-height: 1.5em;
+}
+.button, button {
+    display: inline-block;
+    padding: .3em .6em;
+    line-height: 2.5em;
+    color: rgb(240, 240, 240);
+    text-decoration: none;
+    background: black;
+    border-radius: 1em;
+    cursor: pointer;
+}
+.button:disabled, button:disabled {
+    cursor: not-allowed;
+    opacity: .4;
+}
+
+/*** Utility classes ***/
+.vertical-reference:before {            /* Allows in-line content of variable height to be centered vertically */
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.center-vertically {                    /* Content to be centered vertically */
+    display: inline-block;
+    vertical-align: middle;
+    width: 85%;
+}
+
+/*** Welcome view ***/
+#intro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgb(240, 240, 240);
+    transition: opacity 1s;
+    -webkit-backface-visibility: hidden;/* Prevents absolutely positioned elements being invisible on Android */
+}
+.no-js #intro {                         /* If JS enabled, class is removed to avoid scrolling */
+    position: static;
+}
+#intro.fade {                           /* On clicking "continue", class is added to reveal the game */
+    opacity: 0;
+}
+#intro .center-vertically {
+    max-width: 640px;
+    padding: 1em;
+    margin: auto;
+}
+#intro dt {                             /* Makes the definition list horizontal and comma separated */
+    display: inline;
+}
+#intro dfn:after {
+    content: ', ';
+}
+#intro dfn.last:after {
+    content: '';
+}
+#intro dd {
+    margin: 1.5em;
+    text-align: justify;
+}
+#intro .button {                        /* Shows a spinner while loading resources if JS enabled. Only afterwards is the "continue" button shown */ 
+    display: none;                      
+}
+.loader:before,
+.loader:after,
+.loader {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  font-size: 1em;
+  margin: 0 auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #ffffff;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #ffffff;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em #ffffff;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0 #ffffff;
+  }
+}
+.no-js .loader {
+    display: none;
+}
+.notice {                                   /* A notice is displayed when JS is disabled */  
+    display: none;
+    text-decoration: none;
+}
+.notice:before {
+    content: "!"; 
+    display: inline-block;
+    width: 1.2em;
+    margin-right: .3em;
+    text-align: center;
+    line-height: 1.2em;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    color: gray;
+    opacity: .7;
+    border: 3px solid gray;
+    -moz-border-radius: 1.2em;
+    -webkit-border-radius: 1.2em;
+    border-radius: 1.2em;
+}
+.notice span {
+    text-decoration: underline;
+}
+.no-js .notice {                    
+    display: block;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 96%;
+    padding: .3em 2%;
+    font-size: .95em;
+    color: gray;
+    line-height: 1.5em;
+    background: rgb(240,240,240);
+    -moz-border-radius: 1em 1em 0 0;
+    -webkit-border-radius: 1em 1em 0 0;
+    border-radius: 1em 1em 0 0;
+    -webkit-backface-visibility: hidden;  /* Prevents absolutely positioned elements being invisible on Android */
+}
+footer img {
+    width: auto;
+    height: 1em;
+    padding: .2em;
+    vertical-align: middle;
+}
+.author {
+    float: right;
+    text-align: right;
+}
+
+/*** Game view ***/
+#game {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.messages {                                 /* Messages are revealed dynamically one at a time */                        
+    top: 0;
+    width: 100%;
+    font-size: 1.2em;
+    line-height: 2.8em;
+    background: rgb(240,240,240);
+    -moz-border-radius: 0 0 1em 1em;
+    -webkit-border-radius: 0 0 1em 1em;
+    border-radius: 0 0 1em 1em;
+}
+.messages li:not(:first-child) {            
+    display: none;
+}
+.controls {
+    bottom: 3em;
+    width: 100%;
+}
+.messages, .controls {          /* Shows game view's feedback components only after intro view is hidden */
+    display: block;
+    position: absolute;
+    -webkit-backface-visibility: hidden;    /* Prevents absolutely positioned elements being invisible on Android */
+}
+.won:before {                   /* Tick icon on top-left corner of message region */
+    content: '';
+    position: absolute;
+    top: .6em;
+    left: 1.5em;
+    width: .4em;
+    height: 1em;
+    border-width: 0 5px 5px 0;
+    border-style: solid;
+    border-color: #7F913C;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.lost:before {                /* Cross icon on top-left corner of message region */
+    content: 'X';
+    position: absolute;
+    left: 1em;
+    color: #c55500;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+.cup {
+    display: inline-block;
+    width: 30%;
+    height: 20em;
+    background: url('top.png') no-repeat center center transparent;
+    background-size: contain;
+    cursor: pointer;
+}
+.bottom .cup {
+    background-image: url('bottom.png');
+}
+.ball {
+    display: inline-block;
+    width: 3.2em;
+    height: 3.2em;
+    margin: 0 .2em .9em 0;
+    background-color: black;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    box-shadow: inset -25px -25px 40px rgba(0,0,0,.5);
+    background-image: -webkit-linear-gradient(-0deg, rgba(255,255,220,.5) 0%, transparent 100%);
+    background-image: -moz-linear-gradient(-0deg, rgba(255,255,220,.5) 0%, transparent 100%);
+    background-image: -o-linear-gradient(-0deg, rgba(255,255,220,.5) 0%, transparent 100%);
+    background-image: -ms-linear-gradient(-0deg, rgba(255,255,220,.5) 0%, transparent 100%);
+}
+
+/********** Responsive design **********/
+@media only screen and (min-width: 1100px) {
+  body {font-size: 110%}
+}
+@media only screen and (min-width: 1200px) {
+  body {font-size: 120%}
+}
+@media only screen and (min-width: 1300px) {
+  body {font-size: 130%}
+}
+@media only screen and (min-width: 1400px) {
+  body {font-size: 140%}
+}
+@media only screen and (min-width: 1500px) {
+  body {font-size: 150%}
+}
+@media only screen and (min-width: 1600px) {
+  body {font-size: 160%}
+}
+@media only screen and (min-width: 1700px) {
+  body {font-size: 170%}
+}
+@media only screen and (min-width: 1800px) {
+  body {font-size: 180%}
+}
+@media only screen and (min-width: 1900px) {
+  body {font-size: 190%}
+}
+@media only screen and (min-width: 2000px) {
+  body {font-size: 200%}
+}
+
+/********** Image pre-loading **********/
+body:before {
+  content: '';
+  background-image: url('top.png'), url('bottom.png');
+  width: 0;
+  height: 0;
+  display: inline;
+}
